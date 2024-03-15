@@ -1,41 +1,38 @@
-import { Button } from 'antd';
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './redux/slides/countSlide'
-import styled from 'styled-components'
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from './routes';
+import DefaultLayout from './Components/Layouts/DefautLayout';
+import { Fragment } from 'react';
 
 function App() {
-  const count = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch()
-  const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
-  return (
-    <div className="App">
-    <h2>xin chao</h2>
-    <Wrapper><Button type="primary">Button</Button></Wrapper>
-    <div>
-      <div>
-        <button
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          Increment
-        </button>
-        <span>{count}</span>
-        <button
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          Decrement
-        </button>
-      </div>
-    </div>
-    </div>
-    
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    {publicRoutes.map((route, index) => {
+                        let Layout = DefaultLayout;
+                        if (route.layout) {
+                            Layout = route.layout;
+                        } else if (route.layout === null) {
+                            Layout = Fragment;
+                        }
+                        const Page = route.component;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            ></Route>
+                        );
+                    })}
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
