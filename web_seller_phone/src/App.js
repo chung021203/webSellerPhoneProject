@@ -2,15 +2,20 @@ import { Button } from 'antd';
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment } from './redux/slides/countSlide'
+import styled from 'styled-components'
 
 
 function App() {
   const count = useSelector((state) => state.counter.value)
   const dispatch = useDispatch()
+  const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
   return (
     <div className="App">
     <h2>xin chao</h2>
-    <Button type="primary">Button</Button>
+    <Wrapper><Button type="primary">Button</Button></Wrapper>
     <div>
       <div>
         <button
