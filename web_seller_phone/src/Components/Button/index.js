@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './Button.module.scss';
+import styles from '../Button/Button.module.scss';
 
 import classNames from 'classnames/bind';
 
