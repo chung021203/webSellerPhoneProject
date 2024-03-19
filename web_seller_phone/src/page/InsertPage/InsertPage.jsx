@@ -10,7 +10,7 @@ function InsertPage() {
                     <div className="input-container">
                         <input type="text" id="product_name" placeholder="Nhập tên điện thoại" />
                         <select id="brand" name="brand">
-                            <option value="Apple">Thương hiệu</option>
+                            <option value="select">Chọn</option>
                             <option value="Apple">Apple</option>
                             <option value="Samsung">Samsung</option>
                             <option value="Samsung">Oppo</option>
