@@ -1,5 +1,10 @@
+import SliderComponent from '../../Components/SliderComponent';
 function HomePage() {
-    return <h2>HomePage</h2>;
+    return (
+        <div>
+            <SliderComponent />
+        </div>
+    );
 }
 
 export default HomePage;
