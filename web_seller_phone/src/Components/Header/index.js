@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import classNames from 'classnames/bind';
 import styles from '../Header/Header.module.scss';
 import images from '../../assets/images';
@@ -21,7 +23,10 @@ function Header() {
                     <Button primary>Đăng kí/ Đăng nhập</Button>
                 </div>
                 <div className={cx('cart')}>
-                    <FontAwesomeIcon icon={faCartPlus} />
+                    {}
+                    <Link to="/cart">
+                        <FontAwesomeIcon icon={faCartPlus} />
+                    </Link>
                 </div>
             </div>
         </header>
