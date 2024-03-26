@@ -7,7 +7,20 @@ function InsertPage() {
                 <form id="add_form">
                     <h2 id="title">Thêm Sản Phẩm</h2>
                     <label>Tên điện thoại</label>
-                    <input type="text" id="product_name" placeholder="Nhập tên điện thoại" /> <br />
+                    <div className="input-container">
+                        <input type="text" id="product_name" placeholder="Nhập tên điện thoại" />
+                        <select id="brand" name="brand">
+                            <option value="select">Chọn</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Samsung">Oppo</option>
+                            <option value="Samsung">Huawei</option>
+                            <option value="Samsung">Vivo</option>
+                            <option value="Samsung">Xiaomi</option>
+                            <option value="Samsung">Google Pixel</option>
+                        </select>
+                    </div>
+                    <br />
                     <label>Giá tiền</label>
                     <input type="text" id="product_price" placeholder="Nhập giá tiền" /> <br />
                     <label>Mô tả</label>
