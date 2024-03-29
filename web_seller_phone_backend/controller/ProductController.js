@@ -1,29 +1,42 @@
-import ProductService from '../services/ProductService.js'
+// productController.js
 
-class ProductController {
-    constructor() {
-        this.productService = new ProductService;
+import { update } from '../services/Product/UpdateProductService.js';
+
+const getAllProducts = async (req, res) => {
+    // Your implementation for getting all products
+};
+
+const getProductById = async (req, res) => {
+    // Your implementation for getting product by ID
+};
+
+const createProduct = async (req, res) => {
+    // Your implementation for creating a new product
+};
+
+const updateProduct = async (req, res) => {
+    const productId = req.params.id;
+    const data = req.body;
+    if (!productId) {
+        return res.status(400).json({
+            status: 'ERR',
+            message: 'The productId is required',
+        });
     }
-
-    getAllProducts(req, res) {
-
+    try {
+        const response = await update(productId, data); // Corrected import here
+        return res.status(200).json(response);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            status: 'ERR',
+            message: 'Internal Server Error',
+        });
     }
+};
 
-    getProductById(req, res) {
+const deleteProductById = async (req, res) => {
+    // Your implementation for deleting a product by ID
+};
 
-    }
-
-    createProduct(req, res) {
-
-    }
-
-    updateProduct(req, res) {
-
-    }
-
-    deleteProductById(req, res) {
-
-    }
-}
-
-export default ProductController
+export { getAllProducts, getProductById, createProduct, updateProduct, deleteProductById };
