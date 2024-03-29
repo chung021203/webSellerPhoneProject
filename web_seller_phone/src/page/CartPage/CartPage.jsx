@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CartItem from '../../Components/CartComponent/CartItem';
+import { Link } from 'react-router-dom'; // Removed BrowserRouter as Router
 
 const CartPage = () => {
     const [cartItems, setCartItems] = useState([
@@ -51,7 +52,10 @@ const CartPage = () => {
                     <div style={{ marginTop: '10px', textAlign: 'center' }}>
                         <div>Tổng tiền: ${calculateTotalPrice()}</div>
                         <div>Phí vận chuyển: Miễn phí</div>
-                        <button onClick={handleCheckout} style={{ backgroundColor: '#007bff', color: '#fff', border: 'none', padding: '10px', borderRadius: '5px', marginTop: '10px' }}>Thanh toán</button>
+                        {/* Removed Router wrapper */}
+                        <Link to="/checkout">
+                            <button onClick={handleCheckout} style={{ backgroundColor: '#007bff', color: '#fff', border: 'none', padding: '10px', borderRadius: '5px', marginTop: '10px' }}>Thanh toán</button>
+                        </Link>
                     </div>
                 </div>
             )}
