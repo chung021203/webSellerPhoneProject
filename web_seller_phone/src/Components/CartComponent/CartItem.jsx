@@ -12,7 +12,7 @@ const CartItem = ({ product, onRemove, onIncrease, onDecrease }) => {
                 <tbody>
                     <tr>
                         <td><img src={product.imageUrl} alt={product.name} style={{ width: '1px', height: '1px', objectFit: '10px' }} /></td>
-                        <td>{product.color}</td>
+                        <td>{product.name}</td>
                         <td>${product.price}</td>
                         <td>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
