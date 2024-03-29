@@ -2,27 +2,27 @@ import productRep from '../repository/ProductRepo.js'
 
 class ProductService {
     constructor() {
-        this.productQuery = new ProductQuery();
+        this.productRep = new ProductQuery();
     }
 
     getAllProducts(callback) {
-        this.productQuery.getAllProducts(callback);
+        this.productRep.getAllProducts(callback);
     }
 
     getProductById(id, callback) {
-        this.productQuery.getProductById(id, callback);
+        this.productRep.getProductById(id, callback);
     }
 
     createProduct(productData, callback) {
-        this.productQuery.createProduct(productData, callback);
+        this.productRep.createProduct(productData, callback);
     }
 
     updateProduct(id, productData, callback) {
-        this.productQuery.updateProduct(id, productData, callback);
+        this.productRep.updateProduct(id, productData, callback);
     }
 
     deleteProduct(id, callback) {
-        this.productQuery.deleteProduct(id, callback);
+        this.productRep.deleteProduct(id, callback);
     }
 }
 
