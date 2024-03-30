@@ -1,4 +1,4 @@
-import productRep from '../repository/ProductRepo.js'
+import productRep from '../repository/ProductRepo';
 
 class ProductService {
     constructor() {

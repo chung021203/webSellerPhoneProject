@@ -1,6 +1,7 @@
-import router from 'Router'
-import ProductController from '../controller/ProductController.js'
+import express from 'express';
+import ProductController from '../controller/ProductController'
 
+const router = express.Router();
 const productController = new ProductController()
 
 router.get('/get/product', (res, req) => productController.getAllProducts(req, res));
