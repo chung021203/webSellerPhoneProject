@@ -13,4 +13,3 @@ const conn = new Sequelize({
 });
 
 export default conn;
-
