@@ -1,9 +1,20 @@
 // productController.js
 
 import { update } from '../services/Product/UpdateProductService.js';
+import { getAllProductService } from '../services/Product/GetAllProductService.js';
 
 const getAllProducts = async (req, res) => {
     // Your implementation for getting all products
+    try {
+        const response = await getAllProductService();
+        res.status(200).json(response);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            status: 'error',
+            message: 'Internal server error',
+        });
+    }
 };
 
 const getProductById = async (req, res) => {

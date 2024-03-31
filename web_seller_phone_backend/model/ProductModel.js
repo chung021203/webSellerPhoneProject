@@ -21,6 +21,7 @@ const Product = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        // Thêm trường pictureUrl để lưu đường dẫn đến hình ảnh sản phẩm
     },
     {
         timestamps: false,
