@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 const SliderWrapper = styled('div')`
+    margin-top: 50px;
     .slick-list {
         overflow: ${(props) => (props.overflow ? 'visible' : 'hidden')};
     }

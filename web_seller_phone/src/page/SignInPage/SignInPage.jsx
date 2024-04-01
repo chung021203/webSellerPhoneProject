@@ -3,8 +3,16 @@ import Button from '../../Components/Button';
 import InputForm from '../../Components/InputForm/InputForm';
 import { WrapperContainerLeft, WrapperContainerRight, WrappperTextLight } from './style';
 import logoLogin from '../../assets/images/Login.png';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function SignInPage() {
+    const navigate = useNavigate();
+    const handleNavigated = () => {
+        navigate('/sign-up');
+    };
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     return (
         <div
             style={{
@@ -19,14 +27,19 @@ function SignInPage() {
                 <WrapperContainerLeft>
                     <h1>Xin chào</h1>
                     <p style={{ marginBottom: '50px' }}>Đăng nhập vào tài khoản bằng email</p>
-                    <InputForm style={{ marginBottom: '10px' }} placeholder="abc@gmail.com" />
-                    <InputForm placeholder="password" />
-                    <Button style={{ margin: '50px 0 10px' }} primary>
+                    <InputForm
+                        onChange={setEmail}
+                        value={email}
+                        style={{ marginBottom: '10px' }}
+                        placeholder="abc@gmail.com"
+                    />
+                    <InputForm onChange={setPassword} value={password} placeholder="password" />
+                    <Button disable={!email || !password ? true : false} style={{ margin: '50px 0 10px' }} primary>
                         Đăng nhập
                     </Button>
-                    <WrappperTextLight>Quên mật khẩu ?</WrappperTextLight>
                     <p style={{ fontSize: '1.2rem' }}>
-                        Chưa có tài khoản ? <WrappperTextLight>Tạo tài khoản</WrappperTextLight>
+                        Chưa có tài khoản ?{' '}
+                        <WrappperTextLight onClick={handleNavigated}> Tạo tài khoản</WrappperTextLight>
                     </p>
                 </WrapperContainerLeft>
                 <WrapperContainerRight style={{ borderRadius: '6px' }}>
