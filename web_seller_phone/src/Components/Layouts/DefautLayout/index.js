@@ -1,14 +1,11 @@
-import Header from '../../Header'
-function DefaultLayout({children}) {
-    return ( 
-        <div>
+import Header from '../../Header';
+function DefaultLayout({ children }) {
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <Header />
-            <div className='container'>
-                {children}
-            </div>
-
+            <div style={{ width: '1400px' }}>{children}</div>
         </div>
-     );
+    );
 }
 
 export default DefaultLayout;

@@ -1,9 +1,12 @@
-import CardComponent from '../../Components/CardComponents/CardComponent'
-const HomePage = () => {
+
+import SliderComponent from '../../Components/SliderComponent';
+function HomePage() {
     return (
-    <div style={{ margintop: '20px', display: "flex", alignItems:'center', gap: '20px'}}>
-        <CardComponent />
-    </div>)
+        <div>
+            <SliderComponent />
+        </div>
+    );
+
 }
 
 export default HomePage;
