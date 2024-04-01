@@ -20,7 +20,7 @@ function Header() {
                 <Search />
 
                 <div className={cx('action')}>
-                    <Button primary>Đăng kí/ Đăng nhập</Button>
+                    <Button primary>Đăng nhập</Button>
                 </div>
                 <div className={cx('cart')}>
                     {}

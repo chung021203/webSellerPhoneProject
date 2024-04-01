@@ -7,22 +7,23 @@ import { WrapperDiscountText } from './style';
 
 const CardComponent = () => {
     return (
-        <Card
-            hoverable
-            style={{ width: '200px', boxShadow: '0 4px 6px #00000029' }}
-            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-        >
-            <StyleNameProduct>IPhone</StyleNameProduct>
-            <WrapperReportText>
-                <span>4.96</span>
-                <span>| đã bán 1000+</span>
-            </WrapperReportText>
-            <WrapperPriceText>
-                1000000đ
-                <WrapperDiscountText>-5%</WrapperDiscountText>
-            </WrapperPriceText>
-        </Card>
+        <div style={{ margin: '40px 20px' }}>
+            <Card
+                hoverable
+                style={{ width: 200 }}
+                cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+            >
+                <StyleNameProduct>IPhone</StyleNameProduct>
+                <WrapperReportText>
+                    <span>4.96</span>
+                    <span>| đã bán 1000+</span>
+                </WrapperReportText>
+                <WrapperPriceText>
+                    1000000đ
+                    <WrapperDiscountText>-5%</WrapperDiscountText>
+                </WrapperPriceText>
+            </Card>
+        </div>
     );
 };
-
 export default CardComponent;
