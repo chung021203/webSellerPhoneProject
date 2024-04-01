@@ -1,5 +1,3 @@
-// ProductService.js
-
 import Product from '../../model/ProductModel.js';
 
 const update = async (id, data) => {

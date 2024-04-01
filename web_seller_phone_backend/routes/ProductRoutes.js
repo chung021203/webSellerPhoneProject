@@ -7,6 +7,7 @@ import {
     deleteProductById,
 } from '../controller/ProductController.js';
 
+const router = express.Router();
 router.get('/get/product', (req, res) => getAllProducts(req, res));
 router.get('/get/product/:id', (req, res) => getProductById(req, res));
 router.post('/post/product', (req, res) => createProduct(req, res));

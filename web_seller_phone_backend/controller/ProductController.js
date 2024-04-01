@@ -1,5 +1,5 @@
 import { update } from '../services/Product/UpdateProductService.js';
-
+import { create } from '../services/Product/CreateProductService.js';
 const getAllProducts = async (req, res) => {
     // Your implementation for getting all products
 };
@@ -9,8 +9,19 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-    // Your implementation for creating a new product
+    const { nameProduct, price, stock_quantity, descrip_product, url_picture } = req.body;
+        if (!nameProduct || !price || !stock_quantity || !descrip_product || !url_picture) {
+            return res.status(400).json({ error: 'Invalid data' });
+        }
+        try {
+            const productData = { nameProduct, price, stock_quantity, descrip_product, url_picture };
+            const newProduct = await create(productData);
+            res.status(201).json(newProduct);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
 };
+
 
 const updateProduct = async (req, res) => {
     const productId = req.params.id;

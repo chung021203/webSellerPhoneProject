@@ -21,6 +21,15 @@ const Product = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        descrip_product: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+
+        },
+        url_picture: {
+            type: DataTypes.BLOB,
+            allowNull: true,
+        },
     },
     {
         timestamps: false,
