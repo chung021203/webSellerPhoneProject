@@ -1,8 +1,6 @@
-//ProductService.js
+import Product from '../../model/ProductModel.js';
 
-import Product from "../../model/ProductModel";
-
-const getProduct = async (id, data) =>{
+const getProduct = async (id) => {
     try {
         const product = await Product.findByPk(id);
         if (!product) {
@@ -14,7 +12,7 @@ const getProduct = async (id, data) =>{
 
         return {
             status: 'success',
-            product: product,
+            data: product,
         };
     } catch (error) {
         throw error;
@@ -22,3 +20,4 @@ const getProduct = async (id, data) =>{
 };
 
 export { getProduct };
+
