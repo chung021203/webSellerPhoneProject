@@ -6,4 +6,5 @@ export const create = async (productData) => {
     } catch (error) {
         throw new Error(`Could not create product: ${error.message}`);
     }
+    
 };
