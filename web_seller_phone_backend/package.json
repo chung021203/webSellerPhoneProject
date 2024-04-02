@@ -19,8 +19,5 @@
         "node": "18.20.0",
         "Router": "^2.1.0",
         "sequelize": "^6.37.1"
-    },
-    "devDependencies": {
-        "nodemon": "^3.1.0"
     }
 }
