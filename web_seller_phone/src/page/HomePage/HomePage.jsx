@@ -3,7 +3,18 @@ import CardComponent from '../../Components/CardComponents/CardComponent';
 import { WrapperCartComponent } from './style';
 import TypeProducts from '../../Components/TypeProducts/TypeProducts';
 import ProductFilter from '../../Components/ProductFilter/ProductFilter';
+import { useEffect, useState } from 'react';
+import { getAllProductRequest } from '../../apiService/apiService';
 function HomePage() {
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        const fetchApi = async () => {
+            const result = await getAllProductRequest();
+            setProducts(result.data);
+        };
+        fetchApi();
+    }, []);
+    console.log(products);
     return (
         <div style={{ height: '2000px' }}>
             <TypeProducts> </TypeProducts>
@@ -36,21 +47,10 @@ function HomePage() {
                             <p style={{ fontWeight: '600', color: 'var(--primary-color)' }}>GỢI Ý DÀNH CHO BẠN</p>
                         </div>
                     </div>
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
+
+                    {products.map((item) => {
+                        return <CardComponent key={item.id_product} data={item}></CardComponent>;
+                    })}
                 </WrapperCartComponent>
             </div>
         </div>
