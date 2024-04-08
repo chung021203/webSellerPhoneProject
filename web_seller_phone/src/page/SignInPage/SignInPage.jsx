@@ -2,7 +2,7 @@ import { Image } from 'antd';
 import Button from '../../Components/Button';
 import InputForm from '../../Components/InputForm/InputForm';
 import { WrapperContainerLeft, WrapperContainerRight, WrappperTextLight } from './style';
-import logoLogin from '../../assets/images/Login.png';
+import logoLogin from '../../assets/images/loginImg.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -27,12 +27,7 @@ function SignInPage() {
                 <WrapperContainerLeft>
                     <h1>Xin chào</h1>
                     <p style={{ marginBottom: '50px' }}>Đăng nhập vào tài khoản bằng email</p>
-                    <InputForm
-                        onChange={setEmail}
-                        value={email}
-                        style={{ marginBottom: '10px' }}
-                        placeholder="abc@gmail.com"
-                    />
+                    <InputForm onChange={setEmail} value={email} style={{ marginBottom: '10px' }} placeholder="Email" />
                     <InputForm onChange={setPassword} value={password} placeholder="password" />
                     <Button disable={!email || !password ? true : false} style={{ margin: '50px 0 10px' }} primary>
                         Đăng nhập
@@ -43,7 +38,7 @@ function SignInPage() {
                     </p>
                 </WrapperContainerLeft>
                 <WrapperContainerRight style={{ borderRadius: '6px' }}>
-                    <Image src={logoLogin} preview={false} alt="iamge-logo" height="203px" width="203px" />
+                    <Image src={logoLogin} preview={false} alt="iamge-logo" height="100%" width="300px" />
                 </WrapperContainerRight>
             </div>
         </div>
