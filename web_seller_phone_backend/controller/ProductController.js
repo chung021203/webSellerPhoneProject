@@ -72,7 +72,7 @@ const updateProduct = async (req, res) => {
         });
     }
     try {
-        const response = await update(productId, data); // Corrected import here
+        const response = await update(productId, data);
         return res.status(200).json(response);
     } catch (error) {
         console.error(error);
