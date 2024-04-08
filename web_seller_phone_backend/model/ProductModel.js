@@ -21,13 +21,15 @@ const Product = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-
-        // Thêm trường pictureUrl để lưu đường dẫn đến hình ảnh sản phẩm
         descrip_product: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         url_picture: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        brand: {
             type: DataTypes.STRING,
             allowNull: false,
         },
