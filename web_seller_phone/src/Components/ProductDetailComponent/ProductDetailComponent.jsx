@@ -8,55 +8,62 @@ import {
     WrapperStyleTextSell,
     WrapperPriceProduct,
     WrapperPriceTextProduct,
-    WrapperAddressProduct,
+    WrapperDesciptionProduct,
     WrapperQualityProduct,
     WrapperInputNumber,
-} from '../../page/ProductDetailPage/style';
+} from './style';
 import { MinusOutlined, PlusOutlined, StarFilled } from '@ant-design/icons';
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
 
-function ProductDetailComponent() {
+function ProductDetailComponent({ data }) {
+    const { id_product, nameProduct, price, stock_quantity, descrip_product, url_picture } = data;
+    const url = url_picture?.data;
+    console.log(url);
+    const imageUrl = url
+        ? String.fromCharCode(...url)
+        : 'https://cdn2.cellphones.com.vn/358x/media/catalog/product/t/_/t_m_19.png';
+    const formatted_price = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+
     return (
         <div>
             <Row style={{ padding: '16px', background: '#fff', borderRadius: '4px', height: '100%' }}>
                 <Col style={{ borderRight: '1px solid #e5e5e5', paddingRight: '20px' }} span={10}>
-                    <Image src={productImg} preview={false} alt="image-product" />
+                    <Image src={imageUrl} preview={false} alt="image-product" />
                     <Row style={{ paddingTop: '10px', justifyContent: 'space-between' }}>
                         <WrapperStyleColImage span={4}>
-                            <WrapperStyleImageSmall src={productImgSmall} preview={false} alt="productImg" />
+                            <WrapperStyleImageSmall src={imageUrl} preview={false} alt="productImg" />
                         </WrapperStyleColImage>
                         <WrapperStyleColImage span={4}>
-                            <WrapperStyleImageSmall src={productImgSmall} preview={false} alt="productImg" />
+                            <WrapperStyleImageSmall src={imageUrl} preview={false} alt="productImg" />
                         </WrapperStyleColImage>
                         <WrapperStyleColImage span={4}>
-                            <WrapperStyleImageSmall src={productImgSmall} preview={false} alt="productImg" />
+                            <WrapperStyleImageSmall src={imageUrl} preview={false} alt="productImg" />
                         </WrapperStyleColImage>
                         <WrapperStyleColImage span={4}>
-                            <WrapperStyleImageSmall src={productImgSmall} preview={false} alt="productImg" />
+                            <WrapperStyleImageSmall src={imageUrl} preview={false} alt="productImg" />
                         </WrapperStyleColImage>
                         <WrapperStyleColImage span={4}>
-                            <WrapperStyleImageSmall src={productImgSmall} preview={false} alt="productImg" />
+                            <WrapperStyleImageSmall src={imageUrl} preview={false} alt="productImg" />
                         </WrapperStyleColImage>
                     </Row>
                 </Col>
 
                 <Col style={{ padding: '70px 100px' }} span={14}>
-                    <WrapperStyleNameProduct>Bản Đồ</WrapperStyleNameProduct>
+                    <WrapperStyleNameProduct>{nameProduct}</WrapperStyleNameProduct>
                     <div>
                         <StarFilled style={{ color: 'rgb(253,216,54)' }} />
                         <StarFilled style={{ color: 'rgb(253,216,54)' }} />
                         <StarFilled style={{ color: 'rgb(253,216,54)' }} />
                         <StarFilled style={{ color: 'rgb(253,216,54)' }} />
-                        <WrapperStyleTextSell> | Đã bán 1000 +</WrapperStyleTextSell>
+                        <WrapperStyleTextSell> | Đã bán {stock_quantity} +</WrapperStyleTextSell>
                     </div>
                     <WrapperPriceProduct>
-                        <WrapperPriceTextProduct>200.000</WrapperPriceTextProduct>
+                        <WrapperPriceTextProduct>{formatted_price}</WrapperPriceTextProduct>
                     </WrapperPriceProduct>
-                    <WrapperAddressProduct>
-                        <span>Giao đến </span>
-                        <span className="address">Bến Nghé quận 1</span> -
-                        <span className="change-address">Đổi địa chỉ</span>
-                    </WrapperAddressProduct>
+                    <WrapperDesciptionProduct>
+                        <span className="header-desciption">Mô tả sản phẩm: </span>
+                        <span className="body-desciption">{descrip_product}</span>
+                    </WrapperDesciptionProduct>
 
                     <div
                         style={{

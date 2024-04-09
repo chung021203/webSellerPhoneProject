@@ -3,7 +3,19 @@ import CardComponent from '../../Components/CardComponents/CardComponent';
 import { WrapperCartComponent } from './style';
 import TypeProducts from '../../Components/TypeProducts/TypeProducts';
 import ProductFilter from '../../Components/ProductFilter/ProductFilter';
+import { useEffect, useState } from 'react';
+import { getAllProductRequest } from '../../apiService/apiService';
+import { Link } from 'react-router-dom';
+
 function HomePage() {
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        const fetchApi = async () => {
+            const result = await getAllProductRequest();
+            setProducts(result.data);
+        };
+        fetchApi();
+    }, []);
     return (
         <div style={{ height: '2000px' }}>
             <TypeProducts> </TypeProducts>
@@ -36,21 +48,14 @@ function HomePage() {
                             <p style={{ fontWeight: '600', color: 'var(--primary-color)' }}>GỢI Ý DÀNH CHO BẠN</p>
                         </div>
                     </div>
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
-                    <CardComponent />
+
+                    {products.map((item) => {
+                        return (
+                            <Link key={item.id_product} to={`/product/${item.id_product}`}>
+                                <CardComponent data={item}></CardComponent>
+                            </Link>
+                        );
+                    })}
                 </WrapperCartComponent>
             </div>
         </div>
