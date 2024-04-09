@@ -35,8 +35,9 @@ export const WrapperPriceTextProduct = styled.h1`
     margin-top: 10px;
 `;
 
-export const WrapperAddressProduct = styled.div`
-    span.address {
+export const WrapperDesciptionProduct = styled.div`
+    margin: 40px 0;
+    span.header-desciption {
         text-decoration: underline;
         font-size: 15px;
         line-height: 24px;
@@ -45,7 +46,7 @@ export const WrapperAddressProduct = styled.div`
         overflow: hidden;
         text-overflow: ellipsisl;
     }
-    span.change-address {
+    span.body-desciption {
         margin-left: 5px;
         color: rgb(11, 116, 229);
         font-size: 12;

@@ -5,6 +5,8 @@ import TypeProducts from '../../Components/TypeProducts/TypeProducts';
 import ProductFilter from '../../Components/ProductFilter/ProductFilter';
 import { useEffect, useState } from 'react';
 import { getAllProductRequest } from '../../apiService/apiService';
+import { Link } from 'react-router-dom';
+
 function HomePage() {
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -14,7 +16,6 @@ function HomePage() {
         };
         fetchApi();
     }, []);
-    console.log(products);
     return (
         <div style={{ height: '2000px' }}>
             <TypeProducts> </TypeProducts>
@@ -49,7 +50,11 @@ function HomePage() {
                     </div>
 
                     {products.map((item) => {
-                        return <CardComponent key={item.id_product} data={item}></CardComponent>;
+                        return (
+                            <Link key={item.id_product} to={`/product/${item.id_product}`}>
+                                <CardComponent data={item}></CardComponent>
+                            </Link>
+                        );
                     })}
                 </WrapperCartComponent>
             </div>

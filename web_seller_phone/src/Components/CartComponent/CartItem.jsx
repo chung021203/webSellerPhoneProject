@@ -14,7 +14,7 @@ import {
     WrapperCartRemove,
 } from './style';
 import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import { WrapperQualityProduct } from '../../page/ProductDetailPage/style';
+import { WrapperQualityProduct } from '../ProductDetailComponent/style';
 
 const CartItem = ({ product, onRemove, onIncrease, onDecrease }) => {
     // Calculate total price for the product

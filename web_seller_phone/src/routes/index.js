@@ -11,7 +11,6 @@ import ProductDetailPage from '../page/ProductDetailPage/ProductDetailPage';
 import SignInPage from '../page/SignInPage/SignInPage';
 import SignUpPage from '../page/SignUpPage/SignUpPage';
 
-
 const publicRoutes = [
     { path: '/', component: HomePage },
     { path: '/order', component: OrderPage },
@@ -21,10 +20,9 @@ const publicRoutes = [
     { path: '/update', component: UpdatePage },
     { path: '/insert', component: InsertPage },
     { path: '/checkout', component: CheckoutPage },
-     { path: '/product-detail', component: ProductDetailPage },
+    { path: '/product/:id', component: ProductDetailPage },
     { path: '/sign-in', component: SignInPage, layout: null },
     { path: '/sign-up', component: SignUpPage, layout: null },
-
 ];
 const privateRoutes = [];
 export { privateRoutes, publicRoutes };
