@@ -3,6 +3,8 @@ import { getAllProductService } from '../services/Product/GetAllProductService.j
 import { getProduct } from '../services/Product/GetProductByIDService.js';
 import { deleteProduct } from '../services/Product/DeleteProductService.js';
 import { create } from '../services/Product/CreateProductService.js';
+import { searchProductByName } from '../services/Product/SearchProductService.js';
+
 const getAllProducts = async (req, res) => {
     // Your implementation for getting all products
     try {
@@ -105,4 +107,38 @@ const deleteProductById = async (req, res) => {
     }
 };
 
-export { getAllProducts, getProductById, createProduct, updateProduct, deleteProductById };
+const searchProduct = async (req, res) => {
+    const productName = req.query.name;
+    
+    if (!productName) {
+        return res.status(400).json({
+            status: 'error',
+            message: 'Product name parameter is required for search',
+        });
+    }
+
+    try {
+        const products = await searchProductByName(productName);
+
+        if (products.length === 0) {
+            return res.status(404).json({
+                status: 'error',
+                message: 'No products found matching the search criteria',
+            });
+        }
+
+        return res.status(200).json({
+            status: 'success',
+            products,
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            status: 'error',
+            message: 'Internal Server Error',
+        });
+    }
+
+};
+
+export { getAllProducts, getProductById, createProduct, updateProduct, deleteProductById, searchProduct };
