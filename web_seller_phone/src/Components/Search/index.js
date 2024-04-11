@@ -14,24 +14,24 @@ const cx = classNames.bind(styles);
 function Search() {
     // const [resultSearch, setResultSearch] = useState([]);
     const [value, setValue] = useState('');
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (!value.trim()) {
-            setLoading(false); // Không có gì để tải, nên đặt loading là false
+            // setLoading(false); // Không có gì để tải, nên đặt loading là false
 
             return;
         }
         const fetchApi = async () => {
             try {
-                setLoading(true); // Bắt đầu tải dữ liệu, đặt loading là true
+                // setLoading(true); // Bắt đầu tải dữ liệu, đặt loading là true
 
                 const result = await searchRequest(value);
                 dispatch(setSearchResults(result.products));
-                setLoading(false);
+                // setLoading(false);
             } catch (error) {
-                setLoading(false);
+                // setLoading(false);
                 dispatch(setSearchResults([]));
 
                 console.error('Error fetching product:', error);
@@ -64,7 +64,7 @@ function Search() {
                     <FontAwesomeIcon icon={faCircleXmark} />
                 </button>
             )}
-            {!loading && value && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
+            {/* {!loading && value && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />} */}
             <Link to="/search">
                 <button className={cx('btn-search')}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />

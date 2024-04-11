@@ -61,7 +61,8 @@ function ProductDetailComponent({ data }) {
                     </WrapperPriceProduct>
                     <WrapperDesciptionProduct>
                         <span className="header-desciption">Mô tả sản phẩm: </span>
-                        <span className="body-desciption">{descrip_product}</span>
+                        <br />
+                        <p className="body-desciption">{descrip_product}</p>
                     </WrapperDesciptionProduct>
 
                     <div
