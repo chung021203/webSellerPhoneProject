@@ -18,7 +18,6 @@ import ButtonComponent from '../ButtonComponent/ButtonComponent';
 function ProductDetailComponent({ data }) {
     const { id_product, nameProduct, price, stock_quantity, descrip_product, url_picture } = data;
     const url = url_picture?.data;
-    console.log(url);
     const imageUrl = url
         ? String.fromCharCode(...url)
         : 'https://cdn2.cellphones.com.vn/358x/media/catalog/product/t/_/t_m_19.png';
@@ -62,7 +61,8 @@ function ProductDetailComponent({ data }) {
                     </WrapperPriceProduct>
                     <WrapperDesciptionProduct>
                         <span className="header-desciption">Mô tả sản phẩm: </span>
-                        <span className="body-desciption">{descrip_product}</span>
+                        <br />
+                        <p className="body-desciption">{descrip_product}</p>
                     </WrapperDesciptionProduct>
 
                     <div
