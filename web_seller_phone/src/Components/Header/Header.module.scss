@@ -11,6 +11,11 @@
     width: 100%;
     height: var(--header-height-default-layout, 60px);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
 }
 .inner {
     height: 100%;
@@ -44,7 +49,7 @@
     align-items: center;
 }
 .cart {
-    font-size: 20px;
+    font-size: 25px;
     color: gray;
     &:hover {
         cursor: pointer;

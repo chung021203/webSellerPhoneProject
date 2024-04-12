@@ -1,6 +1,6 @@
 import '../UpdatePage/Update.css';
 
-function UpdatePage() {
+const UpdatePage = () => {
     return (
         <div className="container-insert">
             <div>
@@ -18,6 +18,5 @@ function UpdatePage() {
             </div>
         </div>
     );
-}
-
+};
 export default UpdatePage;

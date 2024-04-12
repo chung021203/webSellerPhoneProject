@@ -1,11 +1,10 @@
-// ProductService.js
-
 import Product from '../../model/ProductModel.js';
 
 const update = async (id, data) => {
     try {
         const checkProduct = await Product.findByPk(id);
         if (!checkProduct) {
+
             return {
                 status: 'error',
                 message: 'The product is not defined',
