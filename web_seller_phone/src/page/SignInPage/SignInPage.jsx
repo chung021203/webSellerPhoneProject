@@ -23,7 +23,7 @@ function SignInPage() {
                 height: '100vh',
             }}
         >
-            <div style={{ width: '800px', height: '445px', borderRadius: '6px', background: '#fff', display: 'flex' }}>
+            <div style={{ width: '1000px', height: '445px', borderRadius: '6px', background: '#fff', display: 'flex' }}>
                 <WrapperContainerLeft>
                     <h1>Xin chào</h1>
                     <p style={{ marginBottom: '50px' }}>Đăng nhập vào tài khoản bằng email</p>
@@ -38,7 +38,7 @@ function SignInPage() {
                     </p>
                 </WrapperContainerLeft>
                 <WrapperContainerRight style={{ borderRadius: '6px' }}>
-                    <Image src={logoLogin} preview={false} alt="iamge-logo" height="100%" width="300px" />
+                    <Image src={logoLogin} preview={false} alt="iamge-logo" height="100%" width="100%" />
                 </WrapperContainerRight>
             </div>
         </div>

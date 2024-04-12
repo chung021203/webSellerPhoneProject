@@ -46,8 +46,10 @@ export const WrapperDesciptionProduct = styled.div`
         overflow: hidden;
         text-overflow: ellipsisl;
     }
-    span.body-desciption {
+    p.body-desciption {
         margin-left: 5px;
+        margin-top: 10px;
+
         color: rgb(11, 116, 229);
         font-size: 12;
         line-height: 24px;

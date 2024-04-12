@@ -1,7 +1,6 @@
 import User from '../../model/UserModel.js';
 import bcrypt from 'bcryptjs';
 import { genneralAccessToken, genneralRefreshToken } from "../JwtService.js";
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 const LoginUser = (userLogin) => {
     return new Promise(async(resolve, reject) => {
