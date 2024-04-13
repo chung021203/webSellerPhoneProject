@@ -1,47 +1,109 @@
 import React from 'react';
 import { WrapperProductFilter, WrapperText } from './styles';
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined, ReloadOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
+import { useState, useEffect } from 'react';
+import { useNavigate, createSearchParams } from 'react-router-dom';
 
 function ProductFilter() {
-    const items1 = [
-        {
-            key: '1',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                    iphone
-                </a>
-            ),
-        },
-        {
-            key: '2',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-                    samsung
-                </a>
-            ),
-        },
-        {
-            key: '3',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-                    galaxy
-                </a>
-            ),
-        },
-    ];
+    // chuyển trang
+    const navigate = useNavigate();
+    // state
+    const [typeSelected, setTypeSelected] = useState('');
+    const [priceSelected, setPriceSelected] = useState('');
+    const [category, setCategory] = useState({});
 
-    const items2 = [
-        {
-            key: '1.1',
+    // constant
+    const types = ['Apple', 'Samsung', 'Xiaomi', 'Oppo', 'Real me', 'Vivo', 'Nokia'];
+    const prices = ['Dưới 1 triệu', '1 triệu đến 5 triệu', '5 triệu đến 10 triệu', 'Trên 10 triệu'];
+    // handle function
+
+    const handleChangeType = (item) => {
+        setTypeSelected(item);
+        setCategory((prev) => ({ ...prev, brand: item }));
+    };
+    const handleChangePrice = (item) => {
+        setPriceSelected(item);
+        setCategory((prev) => ({ ...prev, minPrice: calculateMinPrice(item), maxPrice: calculateMaxPrice(item) }));
+    };
+    // tính toán giá cả
+    const calculateMinPrice = (price) => {
+        switch (price) {
+            case 'Dưới 1 triệu':
+                return 0;
+
+            case '1 triệu đến 5 triệu':
+                return 1000000;
+            case '5 triệu đến 10 triệu':
+                return 5000000;
+            case 'Trên 10 triệu':
+                return 10000000;
+            default:
+                return 0;
+        }
+    };
+    const calculateMaxPrice = (price) => {
+        switch (price) {
+            case 'Dưới 1 triệu':
+                return 1000000;
+            case '1 triệu đến 5 triệu':
+                return 5000000;
+            case '5 triệu đến 10 triệu':
+                return 10000000;
+            case 'Trên 10 triệu':
+                return 100000000;
+            default:
+                return 20000000;
+        }
+    };
+    const handleFilterProducts = () => {
+        navigate({
+            pathname: '/',
+            search: `?${createSearchParams(category)}`,
+        });
+    };
+
+    const handleResetProducts = () => {
+        setTypeSelected('');
+        setPriceSelected('');
+        setCategory({});
+        navigate({
+            pathname: '/',
+        });
+    };
+
+    // use search params
+    useEffect(() => {
+        handleFilterProducts();
+    }, [category]);
+
+    // item
+    const items1 = types.map((item, index) => {
+        return {
+            key: `${index}`,
             label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                    Dưới 1 triệu
-                </a>
+                <button style={{ padding: '5px', cursor: 'pointer' }} onClick={() => handleChangeType(item)}>
+                    {item}
+                </button>
             ),
-        },
-        // More items as per items1 but for the second dropdown
-    ];
+        };
+    });
+
+    const items2 = prices.map((item, index) => {
+        return {
+            key: `${index}`,
+            label: (
+                <button
+                    style={{ padding: '5px', cursor: 'pointer' }}
+                    onClick={() => {
+                        handleChangePrice(item);
+                    }}
+                >
+                    {item}
+                </button>
+            ),
+        };
+    });
 
     const overlayStyle = {
         borderRadius: '8px',
@@ -52,26 +114,31 @@ function ProductFilter() {
 
     return (
         <WrapperProductFilter>
-            <WrapperText>Lọc sản phẩm</WrapperText>
+            <WrapperText>
+                Lọc sản phẩm :
+                <span onClick={handleResetProducts} style={{ padding: '0 10px', color: 'gray' }}>
+                    <ReloadOutlined />
+                </span>
+            </WrapperText>
             <div style={{ display: 'flex', flex: '2' }}>
                 <div style={dropdownMargin}>
                     <Dropdown menu={{ items: items1 }} trigger={['hover']} overlayStyle={overlayStyle}>
-                        <a>
-                            Danh mục
+                        <p>
+                            {typeSelected ? typeSelected : 'Danh mục'}
                             <span style={{ marginLeft: '5px' }}>
                                 <DownOutlined />
                             </span>
-                        </a>
+                        </p>
                     </Dropdown>
                 </div>
                 <div style={dropdownMargin}>
                     <Dropdown menu={{ items: items2 }} trigger={['hover']} overlayStyle={overlayStyle}>
-                        <a>
-                            Giá
+                        <p>
+                            {priceSelected ? priceSelected : 'Giá'}
                             <span style={{ marginLeft: '5x' }}>
                                 <DownOutlined />
                             </span>
-                        </a>
+                        </p>
                     </Dropdown>
                 </div>
             </div>
