@@ -4,18 +4,56 @@ import { WrapperCartComponent } from './style';
 import TypeProducts from '../../Components/TypeProducts/TypeProducts';
 import ProductFilter from '../../Components/ProductFilter/ProductFilter';
 import { useEffect, useState } from 'react';
-import { getAllProductRequest } from '../../apiService/apiService';
+import { getAllProductRequest, filterRequest } from '../../apiService/apiService';
 import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 function HomePage() {
     const [products, setProducts] = useState([]);
+    const [searchParams] = useSearchParams();
+    const [hasFilteredProducts, setHasFilteredProducts] = useState(true); // Thêm biến state
+
+    // xử lí hiển thị tất cả sản phẩm
+    // useEffect(() => {
+    //     const fetchApi = async () => {
+    //         const result = await getAllProductRequest();
+    //         setProducts(result.data);
+    //     };
+    //     fetchApi();
+    // }, []);
+    // xử lí lọc sản phẩm
+
     useEffect(() => {
-        const fetchApi = async () => {
-            const result = await getAllProductRequest();
-            setProducts(result.data);
-        };
-        fetchApi();
-    }, []);
+        if (!searchParams.toString()) {
+            const fetchApi = async () => {
+                const result = await getAllProductRequest();
+                setProducts(result.data);
+                setHasFilteredProducts(true); // Đặt trạng thái đã lọc sản phẩm
+            };
+            fetchApi();
+        } else {
+            let paramsObject = {};
+            for (let [key, value] of searchParams.entries()) {
+                paramsObject[key] = value;
+            }
+            if (Object.keys(paramsObject).length === 0 && paramsObject.constructor === Object) {
+                return;
+            }
+            console.log(paramsObject);
+            const fetchApi = async () => {
+                try {
+                    const result = await filterRequest(paramsObject);
+                    setProducts(result.products);
+                    setHasFilteredProducts(result.products.length > 0); // Cập nhật trạng thái của biến state
+                } catch (e) {
+                    console.error('Error when fetching filtered products:', e);
+                    setHasFilteredProducts(false); // Đặt trạng thái không có sản phẩm lọc
+                }
+            };
+            fetchApi();
+        }
+    }, [searchParams]);
+
     return (
         <div style={{ height: '2000px' }}>
             <TypeProducts> </TypeProducts>
@@ -49,13 +87,15 @@ function HomePage() {
                         </div>
                     </div>
 
-                    {products.map((item) => {
-                        return (
+                    {hasFilteredProducts ? (
+                        products.map((item) => (
                             <Link key={item.id_product} to={`/product/${item.id_product}`}>
                                 <CardComponent data={item}></CardComponent>
                             </Link>
-                        );
-                    })}
+                        ))
+                    ) : (
+                        <p style={{ textAlign: 'center', padding: '20px' }}>Không tìm thấy sản phẩm phù hợp</p>
+                    )}
                 </WrapperCartComponent>
             </div>
         </div>

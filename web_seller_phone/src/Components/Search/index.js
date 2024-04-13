@@ -61,7 +61,7 @@ function Search() {
                     }}
                     className={cx('clear')}
                 >
-                    <FontAwesomeIcon icon={faCircleXmark} />
+                    <FontAwesomeIcon style={{ cursor: 'pointer' }} icon={faCircleXmark} />
                 </button>
             )}
             {/* {!loading && value && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />} */}

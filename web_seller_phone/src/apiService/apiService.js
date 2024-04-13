@@ -27,3 +27,15 @@ export const searchRequest = async (name) => {
         console.log(error);
     }
 };
+export const filterRequest = async (category) => {
+    try {
+        const res = await request.get(`/api/filter/product`, {
+            params: {
+                ...category,
+            },
+        });
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
