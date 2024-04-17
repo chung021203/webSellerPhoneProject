@@ -17,4 +17,5 @@ export const WrapperText = styled.div`
     flex: 1;
     color: #00917a;
     padding: 15px 20px;
+    cursor: pointer;
 `;
