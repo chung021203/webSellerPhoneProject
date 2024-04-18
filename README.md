@@ -1,4 +1,4 @@
-# Thành viên
+# Thành viên của nhóm
 
 Trần Minh Chiến
 Nguyễn Trung Hiếu
